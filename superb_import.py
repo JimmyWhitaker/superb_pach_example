@@ -1,5 +1,6 @@
 import json
 import os.path as path
+import os
 import cv2
 import numpy as np
 import imghdr
@@ -46,6 +47,9 @@ def get_spb_data(client, page_size=10):
             yield data_handler
 
 def write_data(spb_client, class_to_color, output_dir):
+
+    os.makedirs(output_dir, exist_ok=True)
+
     # Read and render each file
     for data_handler in get_spb_data(spb_client):
         dataset = data_handler.get_dataset_name()
@@ -62,7 +66,7 @@ def write_data(spb_client, class_to_color, output_dir):
 
         # Same image without labels 
         img_str = cv2.imencode(f'.{imghdr}', image[:,:,::-1])[1].tobytes()
-        with open(path.join(output_dir, dataset, data_key), 'wb') as f: 
+        with open(path.join(output_dir, data_key), 'wb') as f: 
             f.write(img_str)
 
         for obj in label['objects']:
@@ -82,10 +86,10 @@ def write_data(spb_client, class_to_color, output_dir):
         img_str = cv2.imencode(f'.{imghdr}', image[:,:,::-1])[1].tobytes()
 
         # Write labels and rendered image to output directory
-        with open(path.join(output_dir, dataset, data_key+".json"),'w') as f:
+        with open(path.join(output_dir, data_key+".json"),'w') as f:
             json.dump(label, f)
 
-        with open(path.join(output_dir, dataset, rendered_key), 'wb') as f: 
+        with open(path.join(output_dir, rendered_key), 'wb') as f: 
             f.write(img_str)
 
 

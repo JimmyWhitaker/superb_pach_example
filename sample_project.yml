@@ -11,7 +11,7 @@ transform:
   - "/bin/sh"
   stdin:
   - python superb_import.py --project_name "Sample project"
-  image: jimmywhitaker/superb_ai:dev0.1
+  image: jimmywhitaker/superb_ai:0.1
   secrets:
   - name: superbai
     env_var: SPB_ACCOUNT_NAME
