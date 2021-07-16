@@ -1,4 +1,7 @@
 # Superb.ai + Pachyderm Integration
+
+![](images/diagram.png)
+
 This example shows how you can create a [Pachyderm](https://www.pachyderm.com/) pipeline to automatically version and save data you've labeled in [Superb.ai](https://www.superb-ai.com/) to use in downstream machine learning workflows. 
 
 The integration connects to your SuperbAI project, ingests the data into Pachyderm on a [cron schedule](https://docs.pachyderm.com/latest/concepts/pipeline-concepts/pipeline/cron/). 
@@ -28,3 +31,6 @@ pachctl create secret -f secrets.json
 ```bash
 pachctl create pipeline -f sample_project.yml
 ```
+
+5. Pachyderm will automatically kick off the pipeline and import the data from your sample project. 
+![](images/pachyderm_preview.jpeg)

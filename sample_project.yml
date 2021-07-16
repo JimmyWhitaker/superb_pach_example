@@ -1,7 +1,7 @@
 ---
 pipeline:
-  name: mnist
-description: MNIST example logging to ClearML
+  name: sample_project
+description: Import labeled data from sample project from Superb.ai into Pachyderm
 input:
   cron:
     name: "tick"
