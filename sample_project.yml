@@ -1,0 +1,21 @@
+---
+pipeline:
+  name: mnist
+description: MNIST example logging to ClearML
+input:
+  cron:
+    name: "tick"
+    spec: "@every 120s"
+transform:
+  cmd:
+  - "/bin/sh"
+  stdin:
+  - python superb_import.py --project_name "Sample project"
+  image: jimmywhitaker/superb_ai:dev0.1
+  secrets:
+  - name: superbai
+    env_var: SPB_ACCOUNT_NAME
+    key: account_name
+  - name: clearml
+    env_var: SPB_ACCESS_KEY
+    key: access_key
