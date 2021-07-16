@@ -16,6 +16,6 @@ transform:
   - name: superbai
     env_var: SPB_ACCOUNT_NAME
     key: account_name
-  - name: clearml
+  - name: superbai
     env_var: SPB_ACCESS_KEY
     key: access_key
